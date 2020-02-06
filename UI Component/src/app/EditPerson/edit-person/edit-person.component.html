@@ -1,0 +1,29 @@
+<div class="editContainer">
+    <div class="editContent">
+        <mat-form-field>
+            <input [(ngModel)]="data.firstName" name='editFirstName' matInput
+                placeholder="First Name" type="text" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input [(ngModel)]="data.lastName" name='editLastName' matInput placeholder="Last Name" type="text" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input [(ngModel)]="data.age" name='age' matInput placeholder="Age" type="number" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input [(ngModel)]="data.favouriteColor" name='favouriteColor' matInput placeholder="Favourite Color" required>
+        </mat-form-field>
+        <tr *ngFor="let hobbies of ' '.repeat(data.hobbies.length).split(''); let i = index;">
+            <td>
+             <mat-form-field>
+              <input required matInput placeholder="Hobby ({{ i + 1}})"  
+                          [name]="'hobbies_' + i" [(ngModel)]="data.hobbies[i]">
+             </mat-form-field>
+           </td>
+        </tr>
+    </div>
+    <div class="actionArea">
+        <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+        <button mat-raised-button color="warn" (click)="closeDialog()">No Thanks</button>
+    </div>
+</div>
